@@ -2,7 +2,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">Settings</div>
         <ul class="list-group">
-            <li class="list-group-item"><a href="">Profile</a></li>
+            <li class="list-group-item"><a href="{{ route('fountain.settings.index') }}">Profile</a></li>
             <li class="list-group-item"><a href="">Security</a></li>
             <li class="list-group-item"><a href="">API</a></li>
         </ul>
@@ -11,7 +11,7 @@
         <div class="panel-heading">Billing</div>
         <ul class="list-group">
             <li class="list-group-item"><a href="">Subscription</a></li>
-            <li class="list-group-item"><a href="">Payment Method</a></li>
+            <li class="list-group-item"><a href="{{ route('fountain.settings.paymentmethod') }}">Payment Method</a></li>
             <li class="list-group-item"><a href="{{ route('fountain.billing.invoices.index') }}">Invoices</a></li>
         </ul>
     </div>

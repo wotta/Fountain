@@ -8,9 +8,7 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "fountainphp/basin": "dev-master",
-        "guzzlehttp/guzzle": "^6.2",
-        "larapack/config-writer": "^1.0"
+        "getfountain/basin": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

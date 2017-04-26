@@ -10,15 +10,28 @@ use Stripe\Plan;
 class PlansController extends Controller
 {
     /**
+     * List of stripe plans.
+     *
+     * @var mixed
+     */
+    private $plans;
+
+    /**
+     * PlansController constructor.
+     */
+    public function __construct()
+    {
+        $this->plans = Plan::all(null, config('fountain.stripe.secret'))->data;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $plans = cache()->get('fountain:plans');
-
-        return view('fountain.admin.plans.index', compact('plans'));
+        return view('fountain.admin.plans.index', ['plans' => $this->plans]);
     }
 
     /**
@@ -45,9 +58,7 @@ class PlansController extends Controller
             'currency' => config('fountain.stripe.currency')
         ]);
 
-        Plan::create($request->except('_token'), config('services.stripe.secret'));
-
-        cache()->forget('fountain:plans');
+        Plan::create($request->except('_token'), config('fountain.stripe.secret'));
 
         return redirect()->route('fountain.admin.plans.index');
     }
@@ -60,7 +71,7 @@ class PlansController extends Controller
      */
     public function show($id)
     {
-        $plan = cache()->get('fountain:plans')->where('id', '=', $id)->first();
+        $plan = collect($this->plans)->where('id', '=', $id)->first();
 
         $subscriptions = Subscription::where('stripe_plan', '=', $id)->get();
 
@@ -76,8 +87,6 @@ class PlansController extends Controller
     public function destroy($id)
     {
         Plan::retrieve($id, config('fountain.stripe.secret'))->delete();
-
-        cache()->forget('fountain:plans');
 
         return redirect()->route('fountain.admin.plans.index');
     }

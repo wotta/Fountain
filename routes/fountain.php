@@ -5,4 +5,5 @@ Route::group(['as' => 'fountain.', 'namespace' => 'Fountain'], function () {
     include 'fountain/auth.php';
     include 'fountain/settings.php';
     include 'fountain/billing.php';
+    include 'fountain/pages.php';
 });
