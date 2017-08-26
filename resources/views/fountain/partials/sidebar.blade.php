@@ -10,8 +10,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">Billing</div>
         <ul class="list-group">
-            <li class="list-group-item"><a href="">Subscription</a></li>
-            <li class="list-group-item"><a href="{{ route('fountain.settings.paymentmethod') }}">Payment Method</a></li>
+            <li class="list-group-item"><a href="{{ route('fountain.billing.subscriptionindex') }}">Subscription</a></li>
+            <li class="list-group-item"><a href="{{ route('fountain.billing.paymentmethod') }}">Payment Method</a></li>
             <li class="list-group-item"><a href="{{ route('fountain.billing.invoices.index') }}">Invoices</a></li>
         </ul>
     </div>
