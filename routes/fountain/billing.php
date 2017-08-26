@@ -2,6 +2,7 @@
 
 Route::group(['prefix' => 'billing', 'namespace' => 'billing', 'as' => 'billing.', 'middleware' => ['auth']], function () {
     Route::get('subscription', 'SubscriptionController@index')->name('subscriptionindex');
+    Route::post('subscription/changeplan/{id}', 'SubscriptionController@changePlan')->name('changeplan');
     Route::get('payment-method', 'PaymentController@paymentMethod')->name('paymentmethod');
     Route::post('payment-method-update', 'PaymentController@paymentMethodUpdate')->name('paymentmethodupdate');
     Route::get('default-payment-method/{card}', 'PaymentController@defaultPaymentMethod')->name('defaultpaymentmethod');

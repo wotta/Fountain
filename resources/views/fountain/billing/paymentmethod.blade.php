@@ -33,7 +33,7 @@
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="ccnumber" class="col-sm-3 control-label">Card Number</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" data-stripe="number" placeholder="{{ isset(Auth::user()->card_last_four) ? "************".Auth::user()->card_last_four : '' }}">
+                            <input type="text" class="form-control" data-stripe="number" placeholder="{{ isset(Auth::user()->card_last_four) ? "************".Auth::user()->card_last_four : '' }}" maxlength="16">
                             @if ($errors->has('ccnumber'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('ccnumber') }}</strong>
@@ -45,7 +45,7 @@
                     <div class="form-group{{ $errors->has('cvc') ? ' has-error' : '' }}">
                         <label for="cvc" class="col-sm-3 control-label">Security Code</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" data-stripe="cvc">
+                            <input type="text" class="form-control" data-stripe="cvc" maxlength="4">
                             @if ($errors->has('cvc'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('cvc') }}</strong>
