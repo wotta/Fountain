@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Fountain;
+namespace App\Http\Controllers\Fountain\Billing;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
