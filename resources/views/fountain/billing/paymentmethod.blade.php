@@ -15,7 +15,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <form class="form-horizontal" action="{{ route('fountain.billing.paymentmethodupdate') }}" method="POST" id="paymentMethodUpdate">
+                <form class="form-horizontal" action="{{ route('fountain.billing.paymentmethodadd') }}" method="POST" id="paymentMethodUpdate">
                     {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="col-sm-3 control-label">Cardholder's Name</label>

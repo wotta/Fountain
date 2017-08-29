@@ -38,16 +38,19 @@ class PaymentController extends Controller
         return view('fountain.billing.paymentmethod', ['cards' => $cards, 'defaultCard' => $defaultCard]);
     }
 
-    public function paymentMethodUpdate(Request $request)
+    public function paymentMethodAdd(Request $request)
     {
         $user = Auth::user();
 
         // Get stripe token for credit card
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $stripeToken = $request->input('stripeToken');
         // update default credit card for user
-        $user->updateCard($stripeToken);
+        // $user->updateCard($stripeToken);
+        $customer = \Stripe\Customer::retrieve($user->stripe_id);
+        $customer->sources->create(array("source" => $stripeToken));
 
-        return redirect()->route('fountain.billing.paymentmethod')->with('status', 'Your credit card has been updated');
+        return redirect()->route('fountain.billing.paymentmethod')->with('status', 'Your credit card has been added.');
     }
 
     public function defaultPaymentMethod($card)
