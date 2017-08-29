@@ -5,35 +5,20 @@ namespace App\Http\Controllers\Fountain\Billing;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Services\Fountain\Billing;
 
 class PaymentController extends Controller
 {
     public function paymentMethod()
     {
-        //get user
-        $user = Auth::user();
-
-        // retrieve stripe cards for user
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-
         // see if user has a stripe id
-        if ($user->stripe_id == null) {
-
-            $stripeCreate = \Stripe\Customer::create(array(
-              "email" => $user->email
-            ));
-
-            // update user stripe id in database
-            $user->stripe_id = $stripeCreate['id'];
-
-            $user->save();
+        if (Auth::user()->stripe_id == null) {
+            Billing::createAccount();
         }
 
-        $cards = \Stripe\Customer::retrieve(Auth::user()->stripe_id);
-        // convert stripe collection to array
-        $cards = $cards->__toArray(true);
-        // set default card
-        $defaultCard = $cards['default_source'];
+        $cards = Billing::getCards();
+
+        $defaultCard = Billing::defaultCard();
 
         return view('fountain.billing.paymentmethod', ['cards' => $cards, 'defaultCard' => $defaultCard]);
     }
@@ -45,8 +30,8 @@ class PaymentController extends Controller
         // Get stripe token for credit card
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
         $stripeToken = $request->input('stripeToken');
-        // update default credit card for user
-        // $user->updateCard($stripeToken);
+
+        // Add new card to user account
         $customer = \Stripe\Customer::retrieve($user->stripe_id);
         $customer->sources->create(array("source" => $stripeToken));
 
