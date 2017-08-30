@@ -77,9 +77,10 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
+                    <a href="https://getfountain.co/docs">Documentation</a>
                     <a href="https://laracademy.co/series/fountain">Laracademy</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/getfountain/fountain">GitHub</a>
+                    <a href="https://patreon.com/danrovito">Patreon</a>
                 </div>
             </div>
         </div>

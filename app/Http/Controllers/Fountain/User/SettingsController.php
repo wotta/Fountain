@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Fountain;
+namespace App\Http\Controllers\Fountain\User;
 
 use Auth;
 use Illuminate\Http\Request;

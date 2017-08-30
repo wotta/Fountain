@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Fountain\Billing;
 use App\Http\Requests\Fountain\Admin\CreateStripePlanRequest;
 use App\Http\Controllers\Controller;
 use Laravel\Cashier\Subscription;
+use App\Services\Fountain\Billing;
 use Illuminate\Http\Request;
 use Stripe\Plan;
 use Auth;
@@ -20,28 +21,48 @@ class SubscriptionController extends Controller
 
     public function index()
     {
+        // Redirect if no stripe account exists for current user
+        if (Auth::user()->stripe_id == null) {
+            return redirect()->route('fountain.billing.paymentmethod')->with('status', 'Please add a credit card.');
+        }
         // Get Cards from Stripe
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+        $cards = Billing::getCards();
 
-        $cards = \Stripe\Customer::retrieve(Auth::user()->stripe_id);
-        // convert stripe collection to array
-        $cards = $cards->__toArray(true);
-        // set default card
-        $defaultCard = $cards['default_source'];
+        $defaultCard = Billing::defaultCard();
 
-        return view('fountain.billing.subscription', ['plans' => $this->plans, 'defaultCard' => $defaultCard]);
+        $currentPlan = Billing::currentPlanName();
+
+        $planEnd = Billing::planEnd();
+
+        return view('fountain.billing.subscription', ['plans' => $this->plans, 'defaultCard' => $defaultCard, 'currentPlan' => $currentPlan, 'planEnd' => $planEnd]);
     }
 
     public function changePlan($id)
     {
         $user = Auth::user();
         // check if user has any active subscription
-        if ($user->subscription() == null) {
-            // set the stripe token to null because it will use their default payment method.
+
+        $currentPlan = Billing::currentPlanName();
+
+        if ($currentPlan == null) {
             $user->newSubscription('main', $id)->create(null);
         } else {
             $user->subscription('main')->swap($id);
         }
+
+        return redirect()->route('fountain.billing.subscriptionindex');
+    }
+
+    public function cancelPlan()
+    {
+        Auth::user()->subscription('main')->cancel();
+
+        return redirect()->route('fountain.billing.subscriptionindex');
+    }
+
+    public function resumePlan()
+    {
+        Auth::user()->subscription('main')->resume();
 
         return redirect()->route('fountain.billing.subscriptionindex');
     }

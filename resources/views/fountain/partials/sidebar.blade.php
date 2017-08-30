@@ -3,7 +3,7 @@
         <div class="panel-heading">Settings</div>
         <ul class="list-group">
             <li class="list-group-item"><a href="{{ route('fountain.settings.index') }}">Profile</a></li>
-            <li class="list-group-item"><a href="">Security</a></li>
+            <li class="list-group-item"><a href="{{ route('fountain.settings.password') }}">Security</a></li>
             <li class="list-group-item"><a href="">API</a></li>
         </ul>
     </div>

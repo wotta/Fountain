@@ -73,7 +73,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li class="dropdown-header">Subscription</li>
-                                    <li><a href="">Subscribe</a></li>
+                                    <li><a href="{{ route('fountain.billing.subscriptionindex') }}">Subscribe</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li class="dropdown-header">Settings</li>
                                     <li><a href="{{ route('fountain.settings.index') }}">My Account</a></li>

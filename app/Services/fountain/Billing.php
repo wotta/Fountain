@@ -2,6 +2,7 @@
 
 namespace App\Services\Fountain;
 
+use DB;
 use Auth;
 
 class Billing
@@ -32,7 +33,7 @@ class Billing
         return $cards;
     }
 
-    public function createAccount()
+    public static function createAccount()
     {
         // set stripe key
         \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
@@ -48,5 +49,23 @@ class Billing
         $user->stripe_id = $stripeCreate['id'];
 
         $user->save();
+    }
+
+    public static function currentPlanName()
+    {
+        $plan = DB::table('subscriptions')->select('stripe_plan')->where('user_id', Auth::user()->id)->first();
+        if ($plan == null) {
+           return "";
+        }
+        return $plan->stripe_plan;
+    }
+
+    public static function planEnd()
+    {
+        $plan = DB::table('subscriptions')->select('ends_at')->where('user_id', Auth::user()->id)->first();
+        if ($plan == null) {
+           return "";
+        }
+        return $plan->ends_at;
     }
 }
