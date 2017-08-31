@@ -11,6 +11,12 @@
 
 ## About Fountain
 
+##Installation
+
+To install fountain please use
+
+`composer create-project getfountain/fountain`
+
 ## Commands
 
 Generate a user
