@@ -11,7 +11,7 @@
 
 ## About Fountain
 
-##Installation
+## Installation
 
 To install fountain please use
 
