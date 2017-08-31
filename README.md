@@ -19,6 +19,8 @@ Generate a user
 
 # Contributions
 
+We use the PSR-2 coding style.  We also use <a href="styleci.io">styleci.io</a> so don't worry too much. 
+
 # Bug Reports
 
 Our goal is to have active collaboration on Fountain.  We strongly encourage submitting bug reports.
