@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "getfountain/fountain",
+    "description": "Fountain for Laravel. Jumpstart your next big project. 100% Open Source.",
+    "keywords": ["framework", "laravel", "fountain"],
     "license": "MIT",
     "type": "project",
     "require": {
