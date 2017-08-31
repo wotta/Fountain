@@ -1,4 +1,4 @@
-<p align="center"><a href="https://darovi.co/fountain" target="_blank"><img width="150"src="http://i.imgur.com/z7mMqRI.png"></a></p>
+<p align="center"><a href="https://getfountain.co" target="_blank"><img width="150"src="https://avatars0.githubusercontent.com/u/24256656?v=4&s=200"></a></p>
 
 <p><h2 align="center">Fountain for Laravel</h2></p>
 
