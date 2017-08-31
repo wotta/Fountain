@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Fountain\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Fountain\Admin\CreateUserRequest;
 use App\Http\Requests\Fountain\Admin\UpdateUserRequest;
 use App\User;
 use Auth;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 
 class UsersController extends Controller
@@ -41,12 +41,13 @@ class UsersController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateUserRequest|Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateUserRequest $request)
     {
         Artisan::call('fountain:make-user', [
-            'email' => $request->email, '--name' => $request->name
+            'email' => $request->email, '--name' => $request->name,
         ]);
 
         $this->sendResetLinkEmail($request);
@@ -56,6 +57,7 @@ class UsersController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param User $user
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -67,7 +69,8 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateUserRequest $request
-     * @param User $user
+     * @param User              $user
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateUserRequest $request, User $user)
@@ -81,6 +84,7 @@ class UsersController extends Controller
      * Remove the specified resource from storage.
      *
      * @param User $user
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
@@ -95,6 +99,7 @@ class UsersController extends Controller
      *
      * @param User $user
      * @param $plan
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function unsubscribe(User $user, $plan)
@@ -103,10 +108,12 @@ class UsersController extends Controller
 
         return redirect()->back();
     }
+
     /**
      * Login as the selected user.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function login($id)

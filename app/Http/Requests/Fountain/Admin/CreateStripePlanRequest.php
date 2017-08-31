@@ -24,11 +24,11 @@ class CreateStripePlanRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'amount' => 'required|numeric|min:0|max:1000000',
-            'interval' => 'required',
-            'interval_count' => 'required|numeric|min:0',
-            'trial_period_days' => 'required|numeric|min:0'
+            'name'              => 'required|max:255',
+            'amount'            => 'required|numeric|min:0|max:1000000',
+            'interval'          => 'required',
+            'interval_count'    => 'required|numeric|min:0',
+            'trial_period_days' => 'required|numeric|min:0',
         ];
     }
 }

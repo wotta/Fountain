@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Fountain\Billing;
 
-use Auth;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Fountain\Billing;
+use Auth;
+use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
@@ -33,7 +33,7 @@ class PaymentController extends Controller
 
         // Add new card to user account
         $customer = \Stripe\Customer::retrieve($user->stripe_id);
-        $customer->sources->create(array("source" => $stripeToken));
+        $customer->sources->create(['source' => $stripeToken]);
 
         return redirect()->route('fountain.billing.paymentmethod')->with('status', 'Your credit card has been added.');
     }

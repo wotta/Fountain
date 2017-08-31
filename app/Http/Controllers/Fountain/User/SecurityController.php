@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Fountain\User;
 
+use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
 
 class SecurityController extends Controller
 {
@@ -18,13 +18,12 @@ class SecurityController extends Controller
     {
         $this->validate($request, [
             'current_password' => 'required',
-            'password' => 'required|min:6',
+            'password'         => 'required|min:6',
         ]);
 
         $user = Auth::user();
 
         if (Hash::check($request->input('current_password'), $user->password)) {
-
             $user->password = bcrypt($request->input('password'));
 
             $user->save();

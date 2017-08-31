@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Fountain\Billing;
 
-use App\Http\Requests\Fountain\Admin\CreateStripePlanRequest;
 use App\Http\Controllers\Controller;
-use Laravel\Cashier\Subscription;
 use App\Services\Fountain\Billing;
-use Illuminate\Http\Request;
-use Stripe\Plan;
 use Auth;
+use Laravel\Cashier\Subscription;
+use Stripe\Plan;
 
 class SubscriptionController extends Controller
 {

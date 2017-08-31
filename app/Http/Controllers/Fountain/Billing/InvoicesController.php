@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Fountain\Billing;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Laravel\Cashier\Invoice;
 
 class InvoicesController extends Controller
 {
     /**
-     * Return the list of invoices for the user
+     * Return the list of invoices for the user.
      *
      * @return \Illuminate\View\View
      */
@@ -19,7 +19,7 @@ class InvoicesController extends Controller
     }
 
     /**
-     * Download the invoice
+     * Download the invoice.
      *
      * @param Request $request
      * @param $invoiceId
@@ -27,8 +27,8 @@ class InvoicesController extends Controller
     public function download(Request $request, $invoiceId)
     {
         return $request->user()->downloadInvoice($invoiceId, [
-            'vendor' => config('fountain.company'),
-            'product' => 'Invoice'
+            'vendor'  => config('fountain.company'),
+            'product' => 'Invoice',
         ]);
     }
 }

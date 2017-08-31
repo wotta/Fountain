@@ -41,12 +41,13 @@ class MakeUserCommand extends Command
         $emailAddress = $this->argument('email');
         $name = $this->option('name') ? $this->option('name') : $emailAddress;
 
-        if(User::where('email', $emailAddress)->count() > 0) {
+        if (User::where('email', $emailAddress)->count() > 0) {
             $this->error('Email Address already exists');
+
             return;
         }
 
-        $this->info('Creating user for: '. $emailAddress);
+        $this->info('Creating user for: '.$emailAddress);
         $password = str_random(8);
 
         User::create([
@@ -55,7 +56,7 @@ class MakeUserCommand extends Command
             'password' => bcrypt($password),
         ]);
 
-        $this->info('Password has been set to: '. $password);
+        $this->info('Password has been set to: '.$password);
         $this->info('Finished');
     }
 }
