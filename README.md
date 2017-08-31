@@ -7,6 +7,7 @@
 <a href="https://packagist.org/packages/getfountain/basin"><img src="https://poser.pugx.org/getfountain/basin/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/getfountain/basin"><img src="https://poser.pugx.org/getfountain/basin/license.svg" alt="License"></a>
 <a href="https://styleci.io/repos/89487412"><img src="https://styleci.io/repos/89487412/shield?branch=master" alt="StyleCI"></a>
+ <span class="badge-patreon"><a href="https://patreon.com/danrovito" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span>
 </p>
 
 ## About Fountain
