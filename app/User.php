@@ -3,22 +3,22 @@
 namespace App;
 
 use Darovi\Gravatar;
-use Laravel\Cashier\Billable;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
     use Gravatar, Billable, Notifiable;
 
-	/**
-     * Column gravatar uses to generate the users image
+    /**
+     * Column gravatar uses to generate the users image.
      *
      * @return string
      */
     protected function emailAttributeName()
     {
-       return 'email';
+        return 'email';
     }
 
     /**
@@ -45,6 +45,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = [
-        'trial_ends_at'
+        'trial_ends_at',
     ];
 }

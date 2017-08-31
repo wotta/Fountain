@@ -2,8 +2,8 @@
 
 namespace App\Services\Fountain;
 
-use DB;
 use Auth;
+use DB;
 
 class Billing
 {
@@ -41,9 +41,9 @@ class Billing
         //get user
         $user = Auth::user();
 
-        $stripeCreate = \Stripe\Customer::create(array(
-              "email" => $user->email
-            ));
+        $stripeCreate = \Stripe\Customer::create([
+              'email' => $user->email,
+            ]);
 
         // update user stripe id in database
         $user->stripe_id = $stripeCreate['id'];
@@ -55,8 +55,9 @@ class Billing
     {
         $plan = DB::table('subscriptions')->select('stripe_plan')->where('user_id', Auth::user()->id)->first();
         if ($plan == null) {
-           return "";
+            return '';
         }
+
         return $plan->stripe_plan;
     }
 
@@ -64,8 +65,9 @@ class Billing
     {
         $plan = DB::table('subscriptions')->select('ends_at')->where('user_id', Auth::user()->id)->first();
         if ($plan == null) {
-           return "";
+            return '';
         }
+
         return $plan->ends_at;
     }
 }

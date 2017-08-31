@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Fountain\Admin;
 
-use App\Http\Requests\Fountain\Admin\CreateStripePlanRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Fountain\Admin\CreateStripePlanRequest;
 use Laravel\Cashier\Subscription;
 use Stripe\Plan;
 
@@ -48,14 +48,15 @@ class PlansController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateStripePlanRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateStripePlanRequest $request)
     {
         $request->merge([
-            'id' => str_slug($request->name),
-            'amount' => is_float($request->amount) ? str_replace('.', '', $request->amount) : $request->amount * 100,
-            'currency' => config('fountain.stripe.currency')
+            'id'       => str_slug($request->name),
+            'amount'   => is_float($request->amount) ? str_replace('.', '', $request->amount) : $request->amount * 100,
+            'currency' => config('fountain.stripe.currency'),
         ]);
 
         Plan::create($request->except('_token'), config('fountain.stripe.secret'));
@@ -66,7 +67,8 @@ class PlansController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,7 +83,8 @@ class PlansController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

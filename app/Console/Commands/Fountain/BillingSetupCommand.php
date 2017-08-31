@@ -71,7 +71,6 @@ class BillingSetupCommand extends Command
         $this->validateStripeQuestions($key, $secret);
     }
 
-
     /**
      * Check if the stripe key and secret are test keys.
      *
@@ -80,7 +79,7 @@ class BillingSetupCommand extends Command
      */
     protected function validateStripeQuestions($key, $secret)
     {
-        if (! str_contains($key, ['pk', 'live']) || ! str_contains($secret, ['sk', 'live'])) {
+        if (!str_contains($key, ['pk', 'live']) || !str_contains($secret, ['sk', 'live'])) {
             $this->error('Something went wrong with your key(s), please try again.');
 
             return $this->stripeQuestions();
@@ -99,12 +98,12 @@ class BillingSetupCommand extends Command
     {
         file_put_contents($this->laravel->environmentFilePath(), str_replace(
             [
-                'STRIPE_KEY=' . $this->laravel['config']['fountain.stripe.key'],
-                'STRIPE_SECRET=' . $this->laravel['config']['fountain.stripe.secret']
+                'STRIPE_KEY='.$this->laravel['config']['fountain.stripe.key'],
+                'STRIPE_SECRET='.$this->laravel['config']['fountain.stripe.secret'],
             ],
             [
-                'STRIPE_KEY=' . $key,
-                'STRIPE_SECRET=' . $secret
+                'STRIPE_KEY='.$key,
+                'STRIPE_SECRET='.$secret,
             ],
             file_get_contents($this->laravel->environmentFilePath())
         ));

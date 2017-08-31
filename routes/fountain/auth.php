@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['as' => 'auth.', 'namespace' => 'Auth'], function() {
+Route::group(['as' => 'auth.', 'namespace' => 'Auth'], function () {
     // Authentication Routes...
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');

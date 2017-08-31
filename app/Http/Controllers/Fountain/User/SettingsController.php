@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Fountain\User;
 
+use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SettingsController extends Controller
 {
@@ -14,9 +14,10 @@ class SettingsController extends Controller
     }
 
     /**
-     * update user name and email from client side
+     * update user name and email from client side.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -29,7 +30,7 @@ class SettingsController extends Controller
             'email'    => 'required|unique:users,email,'.$user->id,
         ]);
 
-        $user->name  = $request->input('name');
+        $user->name = $request->input('name');
         $user->email = $request->input('email');
 
         $user->save();
@@ -38,9 +39,10 @@ class SettingsController extends Controller
     }
 
     /**
-     * update user avatar
+     * update user avatar.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function changeAvatar(Request $request)
