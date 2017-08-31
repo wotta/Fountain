@@ -3,9 +3,9 @@
 <p><h2 align="center">Fountain for Laravel</h2></p>
 
 <p align="center">
-<a href="https://packagist.org/packages/darovi/basin"><img src="https://poser.pugx.org/darovi/basin/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/darovi/basin"><img src="https://poser.pugx.org/darovi/basin/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/darovi/basin"><img src="https://poser.pugx.org/darovi/basin/license.svg" alt="License"></a>
+<a href="https://packagist.org/packages/getfountain/basin"><img src="https://poser.pugx.org/getfountain/basin/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/getfountain/basin"><img src="https://poser.pugx.org/getfountain/basin/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/getfountain/basin"><img src="https://poser.pugx.org/getfountain/basin/license.svg" alt="License"></a>
 </p>
 
 ## About Fountain
