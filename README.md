@@ -18,9 +18,9 @@ Generate a user
 
 # Contributions
 
-## Bug Reports
+# Bug Reports
 
-Our goal is to have active collaboration on Fountain.  We strongly encourage submitting bug reports and pull requests
+Our goal is to have active collaboration on Fountain.  We strongly encourage submitting bug reports.
 
 When you submit a bug report please be as clear and descriptive as possible.  Include a relevant title and a description.  Your description should include a detailed explanation of the bug you are reporting.  Also, please provide steps to replicate the bug.  We also encourage including a code snippet of where the bug takes place.  Including all relevant information helps others replicate and fix the bug thats being reported.
 
@@ -28,7 +28,11 @@ Please remember that when submitting a bug report it may not be resolved right a
 
 Fountain source code is managed entirely on GitHub.  Here is a list of repositories for the project.
 
- - [https://github.com/FountainPHP/fountain](https://github.com/FountainPHP/fountain)
+ - [https://github.com/GetFountain/Fountain](https://github.com/GetFountain/Fountain)
+ - [https://github.com/GetFountain/Basin](https://github.com/GetFountain/Basin)
+ - [https://github.com/GetFountain/fountain-teams](https://github.com/GetFountain/fountain-teams)
+ - [https://github.com/GetFountain/fountain-two-factor](https://github.com/GetFountain/fountain-two-factor)
+
 
 ## License
 
