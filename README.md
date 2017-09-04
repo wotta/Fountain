@@ -14,15 +14,31 @@
 
 ## Installation
 
-To install fountain please use
+Install via Composer:
 
-`composer create-project getfountain/fountain`
+`composer create-project getfountain/fountain project-name`
 
-## Commands
+Your Fountain project will be installed in `project-name`.
 
-Generate a user
+### Configuration
 
+1. update `.env` file with your settings, such as database credentials, hostname, etc.
+2. set your web server's document root to `project-name/public/`.
+3. if you're using the utf8m4 encoding, add the following to AppServiceProvider.php:
+```php
+
+public function boot()
+{
+    Illuminate\Support\Facades\Schema\Schema::defaultStringLength(191);
+}
+````
+4. migrate the DB:
+`php artisan migrate`
+5. generate an admin user:
 `php artisan fountain:make-user <email>`
+Then, go to the DB and set `is_admin` to 1.
+
+Visit your website (ex.: http://localhost) to get started.
 
 # Contributions
 
